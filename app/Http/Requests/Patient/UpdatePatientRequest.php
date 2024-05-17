@@ -31,9 +31,9 @@ class UpdatePatientRequest extends FormRequest
             'records'                   => ['sometimes', 'array'],
             'records.*.id'              => ['required', 'integer', 'exists:patient_records,id'],
             'records.*.name'            => ['sometimes', 'string', ],
-            'records.*.bloodType'       => ['sometimes', 'string', 'min:1','max:2'],
+            'records.*.bloodType'       => ['sometimes', 'string', 'min:1','max:3'],
             'records.*.birthDate'       => ['sometimes', 'string', 'date_format:Y-m-d'],
-            'records.*.ph'              => ['string', 'nullable', 'min:1', 'max:5']
+            'records.*.ph'              => ['nullable', 'string', 'min:1', 'max:5']
         ];
     }
 }

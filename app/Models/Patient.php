@@ -24,9 +24,19 @@ class Patient extends Model
         'age' => 'integer'
     ];
 
+    protected $appends = [
+        'full_name',
+    ];
+
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->name} {$this->second_name} {$this->last_name} {$this->second_last_name}";
+    }
+
     public function records(): HasMany
     {
         return $this->hasMany(PatientRecord::class);
     }
+
 
 }

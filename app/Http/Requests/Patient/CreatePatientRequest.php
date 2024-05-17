@@ -28,11 +28,11 @@ class CreatePatientRequest extends FormRequest
             'secondLastName'            => ['string', 'required'],
             'age'                       => ['integer', 'required', 'min:0'],
             'type'                      => ['required', 'string', 'in:analysis,pregnant-test,biometric'],
-            'records'                   => ['required', 'array'],
+            'records.*'                 => ['required', 'array'],
             'records.*.name'            => ['string', 'required'],
-            'records.*.bloodType'       => ['string', 'required','min:1','max:2'],
+            'records.*.bloodType'       => ['string', 'required','min:1','max:3'],
             'records.*.birthDate'       => ['string', 'required','date_format:Y-m-d'],
-            'records.*.ph'              => ['sometimes','string', 'min:1', 'max:5']
+            'records.*.ph'              => ['nullable','string', 'min:1', 'max:5']
         ];
     }
 }

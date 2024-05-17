@@ -17,12 +17,28 @@ class PatientResource extends JsonResource
         return [
             'id'                => $this->id,
             'age'               => $this->age,
-            'last_name'         => $this->last_name,
+            'lastName'          => $this->last_name,
             'name'              => $this->name,
-            'second_last_name'  => $this->second_last_name,
-            'second_name'       => $this->second_name,
+            'secondLastName'    => $this->second_last_name,
+            'secondName'        => $this->second_name,
+            'fullName'          => $this->full_name,
             'type'              => $this->type,
+            'humanizedType'     => $this->humanizedType(),
             'records'           => new PatientRecordCollection( $this->records )
         ];
     }
+
+    private function humanizedType(): string {
+        switch( $this->type ) {
+            case "analysis":
+                return "Análisis";
+            case "pregnant-test":
+                return "Prueba de embarazo";
+            case "biometric":
+                return "Biometría";
+            default:
+                return "Desconocido";
+        }
+    }
+
 }
